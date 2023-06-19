@@ -1,4 +1,4 @@
-import { VStack, Image  } from 'native-base'
+import { VStack, Image, Text, Center  } from 'native-base'
 
 import LogoSvg from '@assets/logo.svg'
 import BackgroundImage from '@assets/background.png' 
@@ -13,7 +13,14 @@ export function SignIn() {
         position='absolute'
       />
 
-      <LogoSvg />
+      <Center my={24}>
+        <LogoSvg />
+
+        <Text color="gray.100" fontSize="sm">
+          Treine a sua mente e o seu corpo
+        </Text>
+      </Center>
+
     </VStack>
   )
 }

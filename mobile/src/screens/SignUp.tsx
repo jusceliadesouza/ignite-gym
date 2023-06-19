@@ -16,7 +16,6 @@ export function SignUp() {
         flex={1} 
         px={10} 
         pb={16}
-        bg="gray.700" 
       >
         <Image 
           source={BackgroundImage}

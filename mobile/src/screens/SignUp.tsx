@@ -26,6 +26,7 @@ export function SignUp() {
       >
         <Image 
           source={BackgroundImage}
+          defaultSource={BackgroundImage}
           alt='Duas pessoas treinando'
           resizeMode='contain'
           position='absolute'

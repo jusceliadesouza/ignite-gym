@@ -1,14 +1,31 @@
 # Ignite Gym
 
-Projeto de estudo do Ignite React Native, com proposta de {descrição do projeto}
+![GitHub repo size](https://img.shields.io/github/repo-size/jusceliadesouza/ignite-gym?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/jusceliadesouza/ignite-gym?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/jusceliadesouza/ignite-gym?style=for-the-badge)
 
-## Features
+<!-- <img src="" alt="imagem"> -->
 
-- [ ] Feature 01
-- [ ] Feature 02
-- [ ] Feature 03
+Projeto de estudo do Ignite React Native, com proposta de consultar exercícios de academia, tendo navegação em pilha para rotas públicas e, para as rotas privadas, navegação em abas na parte inferior.
 
-## 🔧 Executando
+## Ajustes e melhorias
+
+Este projeto de estudo ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+
+- [ ] Autenticar usuários
+- [ ] Listar grupos/exercícios
+- [ ] Alteração de foto de perfil
+- [ ] Álbum de fotos
+- [ ] Habilitar editação de imagem
+- [ ] Recuperar imagem selecionada
+- [ ] Ativar carregamento de foto
+- [ ] Buscar informação de arquivo
+- [ ] Restringir tamanho da foto
+- [ ] Formulário
+
+## ☕ Usando o Ignite Gym
+
+Para usar o Ignite Gym, siga estas etapas:
 
 ### Clone o projeto
 
@@ -16,10 +33,14 @@ Projeto de estudo do Ignite React Native, com proposta de {descrição do projet
   git clone https://github.com/jusceliadesouza/ignite-gym.git
 ```
 
-### Selecione a pasta
+#### Execute o projeto
 
-<!-- - [Server](/server/README.md) -->
+```bash
+  npx expo start
+```
 
-<!-- - [Web](/web/README.md) -->
+## 📝 Licença
 
-- [Mobile](/mobile/README.md)
+Esse projeto está sob licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+[⬆ Voltar ao topo](#ignite-gym)

@@ -3,7 +3,6 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-na
 import { SignIn } from '@screens/SignIn'
 import { SignUp } from '@screens/SignUp'
 
-
 type AuthRoutes = {
   signIn: undefined
   signUp: undefined

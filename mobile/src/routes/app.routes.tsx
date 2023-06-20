@@ -1,4 +1,9 @@
+import { useTheme } from "native-base";
 import { createBottomTabNavigator, BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+
+import HomeSvg from '@assets/home.svg'
+import HistoricSvg from '@assets/history.svg'
+import ProfileSvg from '@assets/profile.svg'
 
 import { Historic } from "@screens/Historic";
 import { Home } from "@screens/Home";
@@ -17,6 +22,10 @@ export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
 const { Navigator, Screen } = createBottomTabNavigator<AppRoutes>()
 
 export function AppRoutes() {
+  const { sizes } = useTheme()
+
+  const iconSize = sizes[6]
+
   return (
     <Navigator screenOptions={{
       headerShown: false,
@@ -25,18 +34,45 @@ export function AppRoutes() {
       <Screen 
         name="home"
         component={Home}
-      />
-      <Screen 
-        name="profile"
-        component={Profile}
-      />
-      <Screen 
-        name="exercise"
-        component={Exercise}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <HomeSvg 
+              fill={color} 
+              width={iconSize} 
+              height={iconSize}
+            />
+          )
+        }}
       />
       <Screen 
         name="historic"
         component={Historic}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <HistoricSvg 
+              fill={color} 
+              width={iconSize} 
+              height={iconSize}
+            />
+          )
+        }}
+      />
+      <Screen 
+        name="profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <ProfileSvg 
+              fill={color} 
+              width={iconSize} 
+              height={iconSize}
+            />
+          )
+        }}
+      />
+      <Screen 
+        name="exercise"
+        component={Exercise}
       />
     </Navigator>
   )

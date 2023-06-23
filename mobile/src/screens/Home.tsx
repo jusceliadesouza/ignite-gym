@@ -57,7 +57,7 @@ export function Home(){
           keyExtractor={item => item}
           renderItem={({ item }) => (
             <ExerciseCard 
-              onPress={() => handleOpenExerciseDetails()}
+              onPress={handleOpenExerciseDetails}
             />
           )}
           showsVerticalScrollIndicator={false}

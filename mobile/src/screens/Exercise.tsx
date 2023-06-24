@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native'
-import { Box, HStack, Heading, Icon, Image, Text, VStack } from 'native-base'
+import { Box, HStack, Heading, Icon, Image, ScrollView, Text, VStack } from 'native-base'
 import { Feather } from  '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -56,58 +56,60 @@ export function Exercise(){
         </HStack>
       </VStack>
 
-      <VStack p={8}>
-        <Image
-          w="full"
-          h={80}
-          source={{uri: "https://conteudo.imguol.com.br/c/entretenimento/0c/2019/12/03/remada-unilateral-com-halteres-1575402100538_v2_600x600.jpg"}}
-          alt="Nome do exercício"
-          mb={3}
-          resizeMode='cover'
-          rounded="lg"
-          overflow="hidden"
-        />
-
-        <Box
-          bg="gray.600"
-          rounded="md"
-          pb={4}
-          px={4}
-        >
-          <HStack
-            mb={6}
-            mt={5} 
-            alignItems="center" 
-            justifyContent="space-around"
-          >
-            <HStack>
-              <SeriesSvg />
-
-              <Text 
-                color="gray.200"
-                ml={2}
-              >
-                3 séries
-              </Text>
-            </HStack>
-
-            <HStack>
-              <RepetionsSvg />
-
-              <Text 
-                color="gray.200"
-                ml={2}
-                >
-                12 repetições
-              </Text>
-            </HStack>
-          </HStack>
-
-          <Button 
-            title='Marcar como realizado'
+      <ScrollView>
+        <VStack p={8}>
+          <Image
+            w="full"
+            h={80}
+            source={{uri: "https://conteudo.imguol.com.br/c/entretenimento/0c/2019/12/03/remada-unilateral-com-halteres-1575402100538_v2_600x600.jpg"}}
+            alt="Nome do exercício"
+            mb={3}
+            resizeMode='cover'
+            rounded="lg"
+            overflow="hidden"
           />
-        </Box>
-      </VStack>
+
+          <Box
+            bg="gray.600"
+            rounded="md"
+            pb={4}
+            px={4}
+          >
+            <HStack
+              mb={6}
+              mt={5} 
+              alignItems="center" 
+              justifyContent="space-around"
+            >
+              <HStack>
+                <SeriesSvg />
+
+                <Text 
+                  color="gray.200"
+                  ml={2}
+                >
+                  3 séries
+                </Text>
+              </HStack>
+
+              <HStack>
+                <RepetionsSvg />
+
+                <Text 
+                  color="gray.200"
+                  ml={2}
+                  >
+                  12 repetições
+                </Text>
+              </HStack>
+            </HStack>
+
+            <Button 
+              title='Marcar como realizado'
+            />
+          </Box>
+        </VStack>
+      </ScrollView>
     </VStack>
   )
 }

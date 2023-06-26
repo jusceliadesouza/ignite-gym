@@ -16,7 +16,7 @@ type FormDataProps = {
 }
 
 export function SignUp() {
-  const { control, handleSubmit } = useForm<FormDataProps>({
+  const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
     defaultValues: {
       password: 'ignite-gym',
       password_confirm: 'ignite-gym',
@@ -78,6 +78,10 @@ export function SignUp() {
               />
             )}
           />
+
+          <Text color="white">
+              {errors.name?.message}
+          </Text>
 
           <Controller 
             control={control}

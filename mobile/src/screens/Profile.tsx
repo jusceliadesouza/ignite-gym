@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Center, ScrollView, VStack, Skeleton, Text, Heading } from 'native-base'
+
 import * as ImagePicker from 'expo-image-picker'
 
 import { ScreenHeader } from '@components/ScreenHeader'
@@ -12,6 +13,7 @@ const PHOTO_SIZE = 33
 
 export function Profile(){
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
+  const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
 
   async function handleUserPhotoSelect() {
     const photoSelected = await ImagePicker.launchImageLibraryAsync({
@@ -21,9 +23,9 @@ export function Profile(){
       allowsEditing: true,
     })
 
-    if (photoSelected.canceled) {
-      return
-    }
+    if (photoSelected.canceled) return
+
+    setUserPhoto(photoSelected.assets[0].uri)
   }
 
   return (
@@ -43,7 +45,7 @@ export function Profile(){
               />
             :
               <UserPhoto 
-                source={{uri: 'https://github.com/jusceliadesouza.png'}}
+                source={{ uri: userPhoto }}
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />

@@ -7,17 +7,21 @@ type Props = IInputProps & {
 export function Input({ errorMessage = null, isInvalid, ...rest }: Props) {
   const invalid = !!errorMessage || isInvalid
   return (
-    <FormControl isInvalid={invalid}>
+    <FormControl isInvalid={invalid} mb={4}>
       <NativeBaseInput 
-        h={14}
-        mb={4}
-        px={4}
         bg="gray.700"
+        h={14}
+        px={4}
         color="white"
         fontSize="md"
         fontFamily="body"
         borderWidth={0}
         placeholderTextColor='gray.300'
+        isInvalid={invalid}
+        _invalid={{
+          borderWidth: 1,
+          borderColor: 'red.500'
+        }}
         _focus={{
           bg: "gray.700",
           borderWidth: 1,

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { VStack, Image, Text, Center, Heading, ScrollView  } from 'native-base'
 import { useForm, Controller } from 'react-hook-form'
@@ -10,7 +9,7 @@ import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 
 export function SignUp() {
-  const { control } = useForm()
+  const { control, handleSubmit } = useForm()
 
   const navigation = useNavigation()
 
@@ -18,8 +17,8 @@ export function SignUp() {
     navigation.goBack()
   }
 
-  function handleSignUp() {
-    
+  function handleSignUp(data: any) {
+    console.log(data)
   }
 
   return (
@@ -100,6 +99,8 @@ export function SignUp() {
                 placeholder='Confirme a senha'
                 secureTextEntry
                 onChangeText={onChange}
+                onSubmitEditing={handleSubmit(handleSignUp)}
+                returnKeyType='send'
                 value={value}
               />
             )}
@@ -107,7 +108,7 @@ export function SignUp() {
 
           <Button 
             title='Criar e acessar'
-            onPress={handleSignUp}
+            onPress={handleSubmit(handleSignUp)}
           />
         </Center>
 

@@ -16,16 +16,23 @@ export function Profile(){
   const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
 
   async function handleUserPhotoSelect() {
-    const photoSelected = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      quality: 1,
-      aspect: [4, 4],
-      allowsEditing: true,
-    })
+  try {
+      const photoSelected = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [4, 4],
+        allowsEditing: true,
+      })
+  
+      if (photoSelected.canceled) return
 
-    if (photoSelected.canceled) return
-
-    setUserPhoto(photoSelected.assets[0].uri)
+      if (photoSelected.assets[0].uri) setUserPhoto(photoSelected.assets[0].uri)
+    }
+     catch (error) {
+      console.log(error)
+    } finally {
+      setPhotoIsLoading(false)
+    }
   }
 
   return (

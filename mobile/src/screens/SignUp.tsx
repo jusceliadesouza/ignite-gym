@@ -76,6 +76,7 @@ export function SignUp() {
                 onChangeText={onChange}
                 value={value}
                 errorMessage={errors.name?.message}
+                isInvalid
               />
             )}
           />

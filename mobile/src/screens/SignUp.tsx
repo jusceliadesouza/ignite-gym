@@ -16,7 +16,12 @@ type FormDataProps = {
 }
 
 export function SignUp() {
-  const { control, handleSubmit } = useForm<FormDataProps>()
+  const { control, handleSubmit } = useForm<FormDataProps>({
+    defaultValues: {
+      password: 'ignite-gym',
+      password_confirm: 'ignite-gym',
+    }
+  })
 
   const navigation = useNavigation()
 

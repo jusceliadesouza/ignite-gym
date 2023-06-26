@@ -1,4 +1,4 @@
-import { StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 
 import { 

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { VStack, Image, Text, Center, Heading, ScrollView  } from 'native-base'
 
@@ -6,7 +7,6 @@ import BackgroundImage from '@assets/background.png'
 
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
-import { useState } from 'react'
 
 export function SignUp() {
   const [name, setName] = useState('')

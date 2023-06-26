@@ -98,11 +98,12 @@ export function Profile(){
           />
 
           <Heading 
+            mb={2}
+            mt={12}
             color="gray.200"
             fontSize="md"
-            mb={2}
+            fontFamily="heading"
             alignSelf="flex-start"
-            mt={12}
           >
             Alterar senha
           </Heading>

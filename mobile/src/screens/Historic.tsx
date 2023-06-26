@@ -28,7 +28,8 @@ export function Historic(){
         renderSectionHeader={({ section }) => (
           <Heading 
             color="gray.200" 
-            fontSize="md" 
+            fontSize="md"
+            fontFamily="heading"
             mt={10} 
             mb={3}
           >

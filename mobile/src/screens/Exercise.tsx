@@ -38,6 +38,7 @@ export function Exercise(){
           <Heading 
             color="gray.100" 
             fontSize="lg"
+            fontFamily="heading"
             flexShrink={1}
           >
             Puxada frontal

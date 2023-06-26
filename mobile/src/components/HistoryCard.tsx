@@ -16,7 +16,8 @@ export function HistoryCard() {
         <Heading 
           flex={1}
           color="white" 
-          fontSize="md" 
+          fontSize="md"
+          fontFamily="heading"
           textTransform="capitalize"
           numberOfLines={1}
         >

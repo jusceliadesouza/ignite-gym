@@ -67,6 +67,9 @@ export function SignUp() {
           <Controller 
             control={control}
             name='name'
+            rules={{
+              required: 'Informe o nome.'
+            }}
             render={({ field: { onChange, value } }) => (
               <Input 
                 placeholder='Nome'
@@ -79,6 +82,9 @@ export function SignUp() {
           <Controller 
             control={control}
             name='email'
+            rules={{
+              required: 'Informe o e-mail.'
+            }}
             render={({ field: { onChange, value } }) => (
               <Input 
                 placeholder='E-mail'
@@ -93,6 +99,9 @@ export function SignUp() {
           <Controller 
             control={control}
             name='password'
+            rules={{
+              required: 'Informe a senha.'
+            }}
             render={({ field: { onChange, value } }) => (
               <Input 
                 placeholder='Senha'
@@ -106,6 +115,9 @@ export function SignUp() {
           <Controller 
             control={control}
             name='password_confirm'
+            rules={{
+              required: 'Confirme a senha.'
+            }}
             render={({ field: { onChange, value } }) => (
               <Input 
                 placeholder='Confirme a senha'

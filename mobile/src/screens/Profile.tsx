@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Center, ScrollView, VStack, Skeleton, Text, Heading } from 'native-base'
 
+import * as FileSystem from 'expo-file-system'
 import * as ImagePicker from 'expo-image-picker'
 
 import { ScreenHeader } from '@components/ScreenHeader'
@@ -26,7 +27,11 @@ export function Profile(){
   
       if (photoSelected.canceled) return
 
-      if (photoSelected.assets[0].uri) setUserPhoto(photoSelected.assets[0].uri)
+      if (photoSelected.assets[0].uri) {
+        const photoInfo = await FileSystem.getInfoAsync(photoSelected.assets[0].uri)
+
+        setUserPhoto(photoSelected.assets[0].uri)
+      }
     }
      catch (error) {
       console.log(error)

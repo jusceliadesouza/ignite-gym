@@ -12,16 +12,14 @@ Projeto de estudo do Ignite React Native, com proposta de consultar exercícios 
 
 Este projeto de estudo ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [ ] Autenticar usuários
-- [ ] Listar grupos/exercícios
-- [ ] Alteração de foto de perfil
-- [ ] Álbum de fotos
-- [ ] Habilitar editação de imagem
-- [ ] Recuperar imagem selecionada
-- [ ] Ativar carregamento de foto
-- [ ] Buscar informação de arquivo
-- [ ] Restringir tamanho da foto
-- [ ] Formulário
+- [x] Listagem de grupos/exercícios
+- [x] Alteração de foto de perfil
+- [x] Manipulação de imagens
+- [x] Formulário
+- [ ] Integração com a API
+- [ ] Autenticação
+- [ ] Upload de imagens
+- [ ] Refresh Token
 
 ## ☕ Usando o Ignite Gym
 
@@ -33,7 +31,21 @@ Para usar o Ignite Gym, siga estas etapas:
   git clone https://github.com/jusceliadesouza/ignite-gym.git
 ```
 
-#### Execute o projeto
+### Execute o servidor
+
+No terminal, direcione para a pasta `api` e execute o comando:
+
+```bash
+  npm run dev
+```
+<!-- 
+```bash
+``` 
+-->
+
+### Execute o projeto
+
+No terminal, utilize o comando `cd ..` para voltar à raiz do projeto e redirecione para a pasta `mobile`. Por fim, execute o comando:
 
 ```bash
   npx expo start

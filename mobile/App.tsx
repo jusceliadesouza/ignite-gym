@@ -7,6 +7,8 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
 
+import { AuthContext } from '@contexts/AuthContexts';
+
 import { THEME } from './src/theme'
 
 import { Loading } from '@components/Loading';
@@ -25,8 +27,14 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-
+    <AuthContext.Provider value={{
+      id: '1',
+      name: 'Juscélia',
+      email: 'jusceliadesouza@gmail.com',
+      avatar: 'juscelia.png'
+    }}>
       {fontsLoaded ? <Routes /> : <Loading />}
+    </AuthContext.Provider>
     </NativeBaseProvider>
   );
 }

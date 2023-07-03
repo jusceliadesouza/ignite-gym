@@ -10,13 +10,13 @@ Projeto de estudo do Ignite React Native, com proposta de consultar exercícios 
 
 ## Ajustes e melhorias
 
-Este projeto de estudo ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+Este projeto de estudo ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
 
 - [x] Listagem de grupos/exercícios
 - [x] Alteração de foto de perfil
 - [x] Manipulação de imagens
 - [x] Formulário
-- [ ] Integração com a API
+- [x] Integração com a API
 - [ ] Autenticação
 - [ ] Upload de imagens
 - [ ] Refresh Token

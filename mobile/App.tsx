@@ -7,7 +7,7 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
 
-import { AuthContextProvider } from '@contexts/AuthContexts';
+import { AuthContextProvider } from '@contexts/AuthContext';
 
 import { THEME } from './src/theme'
 

@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Box, useTheme } from "native-base";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
-import  { AuthContext } from '@contexts/AuthContexts'
+import  { AuthContext } from '@contexts/AuthContext'
 
 import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";

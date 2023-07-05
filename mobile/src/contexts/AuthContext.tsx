@@ -12,7 +12,6 @@ type AuthContextProviderProps = {
   children: ReactNode
 }
 
-
 export const AuthContext = createContext<AuthContextDataProps>({
   
 } as AuthContextDataProps) 

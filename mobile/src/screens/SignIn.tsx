@@ -1,6 +1,6 @@
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation } from '@react-navigation/native'
-import { VStack, Image, Text, Center, Heading, ScrollView  } from 'native-base'
+import { VStack, Image, Text, Center, Heading, ScrollView, useToast  } from 'native-base'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -15,7 +15,9 @@ import BackgroundImage from '@assets/background.png'
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 
-type FormDataProps = {
+import { AppError } from '@utils/AppErrors'
+
+type FormData = {
   email: string
   password: string
 }
@@ -28,23 +30,36 @@ const signInSchema = yup.object({
 export function SignIn() {
   const { signIn } = useAuth()
 
-  const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+  const toast = useToast()
+
+  const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(signInSchema)
   })
 
-  const navigation = useNavigation<AuthNavigatorRoutesProps>()
 
   function handleNewAccount() {
     navigation.navigate('signUp')
   }
 
-  function handleSignIn({ email, password }: FormDataProps) {
-   signIn(email, password) 
+  async function handleSignIn({ email, password }: FormData) {
+    try {
+      await signIn(email, password) 
+    } catch (error) {
+      const isAppError = error instanceof AppError
+      const title = isAppError ? error.message : 'Não foi possível acessar a conta! Tente novamente mais tarde!'
+
+      toast.show({
+        title,
+        placement: 'top',
+        bgColor: 'red.500'
+      })
+    }
   }
 
   return (
     <ScrollView 
-      contentContainerStyle={{ flexGrow: 1 }} 
+      contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
       <VStack 

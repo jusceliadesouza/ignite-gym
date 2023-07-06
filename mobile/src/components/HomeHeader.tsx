@@ -2,8 +2,10 @@ import { Heading, HStack, Icon, Text, VStack } from "native-base";
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { UserPhoto } from "./UserPhoto";
+import { useAuth } from "@hooks/useAuth";
 
 export function HomeHeader() {
+  const { user } = useAuth()
   return (
     <HStack
       pt={16} 
@@ -29,7 +31,7 @@ export function HomeHeader() {
           fontSize="md" 
           fontFamily="heading"
         >
-          Juscélia
+          {user.name}
         </Heading>
       </VStack>
 

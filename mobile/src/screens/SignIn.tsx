@@ -16,6 +16,7 @@ import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 
 import { AppError } from '@utils/AppErrors'
+import { useState } from 'react'
 
 type FormData = {
   email: string
@@ -28,8 +29,9 @@ const signInSchema = yup.object({
 })
 
 export function SignIn() {
-  const { signIn } = useAuth()
+  const [isLoading, setIsLoading] = useState(false)
 
+  const { signIn } = useAuth()
   const navigation = useNavigation<AuthNavigatorRoutesProps>()
   const toast = useToast()
 
@@ -44,10 +46,13 @@ export function SignIn() {
 
   async function handleSignIn({ email, password }: FormData) {
     try {
+      setIsLoading(true)
       await signIn(email, password) 
     } catch (error) {
       const isAppError = error instanceof AppError
       const title = isAppError ? error.message : 'Não foi possível acessar a conta! Tente novamente mais tarde!'
+
+      setIsLoading(false)
 
       toast.show({
         title,
@@ -125,6 +130,7 @@ export function SignIn() {
           <Button 
             title='Acessar'
             onPress={handleSubmit(handleSignIn)}
+            isLoading={isLoading}
           />
         </Center>
 

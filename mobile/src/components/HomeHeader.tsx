@@ -6,9 +6,10 @@ import { useAuth } from "@hooks/useAuth";
 import defaultUserPhotoImg from '@assets/userPhotoDefault.png'
 
 import { UserPhoto } from "./UserPhoto";
+import { TouchableOpacity } from "react-native";
 
 export function HomeHeader() {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
   return (
     <HStack
       pt={16} 
@@ -38,12 +39,14 @@ export function HomeHeader() {
         </Heading>
       </VStack>
 
-      <Icon 
-        as={MaterialIcons}
-        name="logout"
-        color="gray.200"
-        size={7}
-      />
+      <TouchableOpacity onPress={signOut}>
+        <Icon 
+          as={MaterialIcons}
+          name="logout"
+          color="gray.200"
+          size={7}
+        />
+      </TouchableOpacity>
     </HStack>
 
   )

@@ -1,8 +1,11 @@
 import { Heading, HStack, Icon, Text, VStack } from "native-base";
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { UserPhoto } from "./UserPhoto";
 import { useAuth } from "@hooks/useAuth";
+
+import defaultUserPhotoImg from '@assets/userPhotoDefault.png'
+
+import { UserPhoto } from "./UserPhoto";
 
 export function HomeHeader() {
   const { user } = useAuth()
@@ -15,7 +18,7 @@ export function HomeHeader() {
       alignItems="center"
     >
       <UserPhoto 
-        source={{ uri: 'https://github.com/jusceliadesouza.png'}}
+        source={user.avatar ? { uri: user.avatar } : defaultUserPhotoImg}
         size={16}
         mr={4}
         alt="Imagem do usuário"

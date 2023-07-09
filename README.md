@@ -17,7 +17,7 @@ Este projeto de estudo ainda está em desenvolvimento e as próximas atualizaç�
 - [x] Manipulação de imagens
 - [x] Formulário
 - [x] Integração com a API
-- [ ] Autenticação
+- [x] Autenticação
 - [ ] Upload de imagens
 - [ ] Refresh Token
 

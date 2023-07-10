@@ -5,6 +5,8 @@ import { FlatList, HStack, Heading, Text, VStack, useToast } from 'native-base'
 import { api } from '@services/api'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 
+import { ExerciseDTO } from '@dtos/ExerciseDTO'
+
 import { ExerciseCard } from '@components/ExerciseCard'
 import { Group } from '@components/Group'
 import { HomeHeader } from '@components/HomeHeader'
@@ -13,7 +15,7 @@ import { AppError } from '@utils/AppErrors'
 export function Home(){
   const [groups, setGroups] = useState<string[]>([])
   const [groupSelected, setGroupSelected] = useState('costas')
-  const [exercises, setExercises] = useState([])
+  const [exercises, setExercises] = useState<ExerciseDTO[]>([])
 
   const toast = useToast()
   const navigation = useNavigation<AppNavigatorRoutesProps>()
@@ -41,6 +43,7 @@ export function Home(){
   async function fetchExercisesByGroup() {
     try {
       const response = await api.get(`/exercises/bygroup/${groupSelected}`)
+      setExercises(response.data)
     } catch (error) {
       const isAppError = error instanceof AppError
       const title = isAppError ? error.message : 'Não foi possível carregar os exercícios.'
@@ -101,7 +104,7 @@ export function Home(){
 
         <FlatList 
           data={exercises}
-          keyExtractor={item => item}
+          keyExtractor={item => item.id}
           renderItem={({ item }) => (
             <ExerciseCard 
               onPress={handleOpenExerciseDetails}

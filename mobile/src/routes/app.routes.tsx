@@ -15,7 +15,7 @@ type AppRoutes = {
   home: undefined
   profile: undefined
   exercise: { exerciseId: string }
-  historic: undefined
+  history: undefined
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
@@ -55,7 +55,7 @@ export function AppRoutes() {
         }}
       />
       <Screen 
-        name="historic"
+        name="history"
         component={Historic}
         options={{
           tabBarIcon: ({ color }) => (

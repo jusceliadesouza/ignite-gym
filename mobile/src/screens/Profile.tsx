@@ -77,6 +77,10 @@ export function Profile(){
     }
   }
 
+  async function handleProfileUpdate(data: FormDataProps) {
+    console.log(data);
+  }
+
   return (
     <VStack flex={1}>
       <ScreenHeader title="Perfil" />
@@ -195,6 +199,7 @@ export function Profile(){
           <Button 
             title="Atualizar"
             mt={4}
+            onPress={handleSubmit(handleProfileUpdate)}
           />
         </Center>
 

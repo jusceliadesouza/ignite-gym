@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Center, ScrollView, VStack, Skeleton, Text, Heading, useToast } from 'native-base'
+import { Controller, useForm } from 'react-hook-form'
+
+import { useAuth } from '@hooks/useAuth'
 
 import { FileInfo } from 'expo-file-system'
 import * as FileSystem from 'expo-file-system'
@@ -13,11 +16,28 @@ import { Button } from '@components/Button'
 
 const PHOTO_SIZE = 33
 
+type FormDataProps = {
+  name: string
+  email: string
+  password: string
+  old_password: string
+  confirm_password: string
+
+}
+
 export function Profile(){
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
   const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
 
   const toast = useToast()
+  const { user } = useAuth()
+  const { control } = useForm<FormDataProps>({
+    defaultValues: {
+      name: user.name,
+      email: user.email,
+      
+    }
+  })
 
   async function handleUserPhotoSelect() {
   try {
@@ -86,15 +106,31 @@ export function Profile(){
             </Text>
           </TouchableOpacity>
 
-          <Input 
-            bg="gray.600"
-            placeholder="Nome"
+          <Controller 
+            control={control}
+            name="name"
+            render={({ field: { value, onChange }}) => (
+              <Input 
+                bg="gray.600"
+                placeholder="Nome"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
           />
 
-          <Input 
-            bg="gray.600"
-            placeholder="jusceliadesousa@gmail.com"
-            isDisabled
+          <Controller 
+            control={control}
+            name="email"
+            render={({ field: { value, onChange }}) => (
+              <Input 
+                bg="gray.600"
+                placeholder="E-mail"
+                isDisabled
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
           />
 
           <Heading 

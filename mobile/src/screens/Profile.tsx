@@ -4,6 +4,9 @@ import { Center, ScrollView, VStack, Skeleton, Text, Heading, useToast } from 'n
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { api } from '@services/api'
+import { AppError } from '@utils/AppErrors'
+
 import { useAuth } from '@hooks/useAuth'
 
 import { FileInfo } from 'expo-file-system'
@@ -50,6 +53,7 @@ const profileSchema = yup.object({
 })
 
 export function Profile(){
+  const [isUpdating, setIsUpdating] = useState(false)
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
   const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
 
@@ -59,7 +63,7 @@ export function Profile(){
   const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
     defaultValues: {
       name: user.name,
-      email: user.email
+      email: user.email,
     },
     resolver: yupResolver(profileSchema),
   })
@@ -97,7 +101,29 @@ export function Profile(){
   }
 
   async function handleProfileUpdate(data: FormDataProps) {
-    console.log(data);
+    try {
+      setIsUpdating(true)
+      
+      await api.put('/users', data)
+
+      toast.show({
+        title: 'Perfil atualizado com sucesso!',
+        placement: 'top',
+        bgColor: 'green.500',
+      })
+    } catch (error) {
+      const isAppError = error instanceof AppError
+      const title = isAppError ? error.message : 'Não foi possível atualizar os dados. Tente novamente mais tarde.'
+      console.log(error)
+
+      toast.show({
+        title,
+        placement: 'top',
+        bgColor: 'red.500',
+      })
+    } finally {
+      setIsUpdating(false)
+    }
   }
 
   return (
@@ -219,6 +245,7 @@ export function Profile(){
             mt={4}
             title="Atualizar"
             onPress={handleSubmit(handleProfileUpdate)}
+            isLoading={isUpdating}
           />
         </Center>
 

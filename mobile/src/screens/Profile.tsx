@@ -36,13 +36,16 @@ const profileSchema = yup.object({
     .nullable()
     .transform((value) => !!value ? value : null),
   confirm_password: yup
-    .string().
-    nullable().
-    transform((value) => !!value ? value : null)
+    .string()
+    .nullable()
+    .transform((value) => !!value ? value : null)
     .oneOf([yup.ref('password'), null], ' As senhas não conferem.')
     .when('password', {
       is: (Field: any) => Field,
-      then: (schema) => schema.nullable().required('Informação da confirmação da senha.')
+      then: (schema) => schema
+        .nullable()
+        .required('Informação da confirmação da senha.')
+        .transform((value) => !!value ? value : null)
     })
 })
 
@@ -213,8 +216,8 @@ export function Profile(){
           />
 
           <Button 
-            title="Atualizar"
             mt={4}
+            title="Atualizar"
             onPress={handleSubmit(handleProfileUpdate)}
           />
         </Center>

@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/jusceliadesouza/ignite-gym?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/jusceliadesouza/ignite-gym?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/jusceliadesouza/ignite-gym?style=for-the-badge)
+<!-- ![GitHub forks](https://img.shields.io/github/forks/jusceliadesouza/ignite-gym?style=for-the-badge) -->
 
 <!-- <img src="" alt="imagem"> -->
 

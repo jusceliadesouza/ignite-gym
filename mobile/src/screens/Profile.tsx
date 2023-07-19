@@ -52,7 +52,7 @@ const profileSchema = yup.object({
     })
 })
 
-export function Profile(){
+export function Profile() {
   const [isUpdating, setIsUpdating] = useState(false)
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
   const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
@@ -90,7 +90,13 @@ export function Profile(){
           })
         }
 
-        setUserPhoto(photoSelected.assets[0].uri)
+        const fileExtension = photoSelected.assets[0].uri.split('.').pop()
+        
+        const photoFile = {
+          name: `${user.name}.${fileExtension}`.toLocaleLowerCase(),
+          uri: photoSelected.assets[0].uri,
+          type: `${photoSelected.assets[0].type}/${fileExtension}`
+        }
       }
     }
      catch (error) {

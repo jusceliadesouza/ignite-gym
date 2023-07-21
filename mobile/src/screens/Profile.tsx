@@ -9,6 +9,8 @@ import { AppError } from '@utils/AppErrors'
 
 import { useAuth } from '@hooks/useAuth'
 
+import defaultUserPhotoImg from '@assets/userPhotoDefault.png'
+
 import { FileInfo } from 'expo-file-system'
 import * as FileSystem from 'expo-file-system'
 import * as ImagePicker from 'expo-image-picker'
@@ -55,7 +57,6 @@ const profileSchema = yup.object({
 export function Profile() {
   const [isUpdating, setIsUpdating] = useState(false)
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
-  const [userPhoto, setUserPhoto] = useState('https://github.com/jusceliadesouza.png')
 
   const toast = useToast()
   const { user, updateUserProfile } = useAuth()
@@ -169,7 +170,11 @@ export function Profile() {
               />
             :
               <UserPhoto 
-                source={{ uri: userPhoto }}
+                source={
+                  user.avatar 
+                  ? { uri: `${api.defaults.baseURL}/avatar/${user.avatar}` } 
+                  : defaultUserPhotoImg
+                }
                 alt="Foto do usuário"
                 size={PHOTO_SIZE}
               />

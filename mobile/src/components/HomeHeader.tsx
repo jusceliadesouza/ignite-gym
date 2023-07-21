@@ -1,25 +1,31 @@
+import { TouchableOpacity } from "react-native";
 import { Heading, HStack, Icon, Text, VStack } from "native-base";
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { useAuth } from "@hooks/useAuth";
+import { api } from "@services/api";
 
 import defaultUserPhotoImg from '@assets/userPhotoDefault.png'
 
 import { UserPhoto } from "./UserPhoto";
-import { TouchableOpacity } from "react-native";
 
 export function HomeHeader() {
   const { user, signOut } = useAuth()
+
   return (
     <HStack
       pt={16} 
       pb={5} 
-      px={8}
+      px={8} 
       bg="gray.600" 
       alignItems="center"
     >
       <UserPhoto 
-        source={user.avatar ? { uri: user.avatar } : defaultUserPhotoImg}
+        source={
+          user.avatar 
+          ? { uri: `${api.defaults.baseURL}/avatar/${user.avatar}` } 
+          : defaultUserPhotoImg
+        }
         size={16}
         mr={4}
         alt="Imagem do usuário"

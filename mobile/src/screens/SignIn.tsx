@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigation } from '@react-navigation/native'
 import { VStack, Image, Text, Center, Heading, ScrollView, useToast  } from 'native-base'
@@ -16,7 +17,6 @@ import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 
 import { AppError } from '@utils/AppErrors'
-import { useState } from 'react'
 
 type FormData = {
   email: string

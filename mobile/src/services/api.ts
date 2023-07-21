@@ -13,11 +13,17 @@ const api = axios.create({
 }) as APIInstanceProps
 
 api.registerInterceptTokenManage = signOut => {
-  const interceptTokenManage = api.interceptors.request.use(response => response, error => {
-    if (error.response && error.response.data) {
-      return Promise.reject(new AppError(error.response.data.message))
+  const interceptTokenManage = api.interceptors.request.use(response => response, requestError => {
+    if (requestError?.response?.status === 401) {
+      if (requestError.response.data?.message === 'token.expired' || requestError.response.data?.message === 'token.invalid' ) {
+
+      }
+    }
+
+    if (requestError.response && requestError.response.data) {
+      return Promise.reject(new AppError(requestError.response.data.message))
     } else {
-      return Promise.reject(error)
+      return Promise.reject(requestError)
     }
   })
 

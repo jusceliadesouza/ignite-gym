@@ -18,7 +18,7 @@ Este projeto de estudo ainda está em desenvolvimento e as próximas atualizaç�
 - [x] Formulário
 - [x] Integração com a API
 - [x] Autenticação
-- [ ] Upload de imagens
+- [x] Upload de imagens
 - [ ] Refresh Token
 
 ## ☕ Usando o Ignite Gym
